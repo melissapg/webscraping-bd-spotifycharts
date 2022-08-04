@@ -1,3 +1,3 @@
-# webscraping spotify charts to a relational database in sqlite
+# wWebscraping Spotify Charts to a Relational Database
 
 personal project to study scraping data to sqlite

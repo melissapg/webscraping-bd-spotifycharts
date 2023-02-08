@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
+import pandas as pd
+import settings
 import requests
 import datetime
-import pandas as pd
-import os
+
 
 def get_charts(chart="regional", country="global", recurrence="daily", date="latest"):
     """
@@ -55,7 +56,7 @@ def get_charts(chart="regional", country="global", recurrence="daily", date="lat
     param["date"] = date
 
     #requesting the HTML
-    headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 OPR/78.0.4093.186'}
+    headers = {'User-Agent': settings.USER_AGENT}
     html_text = requests.get(f"https://spotifycharts.com/{param['chart']}/{param['country']}/{param['recurrence']}/{param['date']}/", headers=headers).text
     
     soup = BeautifulSoup(html_text, 'lxml')
@@ -87,6 +88,3 @@ def get_charts(chart="regional", country="global", recurrence="daily", date="lat
     #df.to_csv(f"./data/spotifycharts_{param['chart']}_{param['country']}_{param['recurrence']}_{param['date']}.csv", sep=";", index=False)
 
     return df
-
-if __name__ == "__main__":
-    get_charts()

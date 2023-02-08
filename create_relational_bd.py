@@ -1,10 +1,8 @@
-# Imports
 from sqlalchemy import create_engine
 
 # Creates connection with the SQLite Database
 engine = create_engine('sqlite:///data/database.db', echo=False)
 
-#Tabela Música
 with engine.connect() as con:
   con.execute(
     """
@@ -16,7 +14,6 @@ with engine.connect() as con:
     );
     """)
 
-#Tabela Artista
 with engine.connect() as con:
   con.execute(
     """
@@ -26,7 +23,6 @@ with engine.connect() as con:
     );
     """)
 
-#Tabela País
 with engine.connect() as con:
   con.execute(
     """
@@ -36,7 +32,6 @@ with engine.connect() as con:
     );
     """)
 
-#Tabela Musicas_Artistas
 with engine.connect() as con:
   con.execute(
     """
@@ -49,7 +44,6 @@ with engine.connect() as con:
     );
     """)
 
-#Tabela Musica_Charts_Paises
 with engine.connect() as con:
   con.execute(
     """
